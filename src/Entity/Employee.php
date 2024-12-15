@@ -25,6 +25,9 @@ class Employee
     #[ORM\Column(type: 'date')]
     private ?\DateTimeInterface $birthDate = null;
 
+    #[ORM\Column(type: 'string', length: 180, unique: true)]
+    private ?string $email = null;
+
     // Getters and Setters
     public function getId(): ?int
     {
@@ -72,6 +75,17 @@ class Employee
     public function setBirthDate(\DateTimeInterface $birthDate): self
     {
         $this->birthDate = $birthDate;
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
         return $this;
     }
 }
